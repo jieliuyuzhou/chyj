@@ -1,54 +1,187 @@
-<!DOCTYPE html>  
-<html lang="en">  
-<head>  
-    <meta charset="UTF-8">  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>沧海电台</title>  
-    <link rel="stylesheet" href="styles.css">
-   <style>
-body {  
-    font-family: Arial, sans-serif;  
-    background-color: #FFC0CB; /* 金亮黄 */  
-    color: #32CD32; /* 橙色文字 */  
-    margin: 0;  
-    padding: 20px;  
-    display: flex;  
-    justify-content: center;  
-    align-items: center;  
-    height: 100vh;  
-    text-align: center;  
-}  
-  
-.room {  
-    padding: 20px;  
-    background-color: rgba(255, 255, 255, 0.1); /* 半透明白色背景，增加层次感 */  
-    border-radius: 10px;  
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* 增加阴影效果 */  
-    max-width: 600px;  
-    margin: auto;  
-}  
-  
-h1 {  
-    color: #2828FF; /* 天青标题，作为亮点 */  
-}  
-  
-p {  
-    line-height: 1.6;  
-}
-</style>
-</head>  
-<body>  
-    <div class="room">  
-        <h1>沧海 Fm ♛¹⁰⁵</h1> 
-        <p>🩷  陪 伴  🩷</p>  
-        <p>🧡  情 感  🧡</p>  
-        <p>💛  音 乐  💛</p>  
-        <p>💚  疗 愈  💚</p>
-        <p>⏰️直播时间19:40/14:00<p> 
-        <p>
-        <a href="https://www.douyin.com/user/MS4wLjABAAAA3C9LZZheBM7S9c6O16BfDEFvGfWqDoSWWEcrnsG0tDBwPKITb8fV9qgPvG_Znrcp"                   target="_blank">沧海抖音</a> ☜
-        <a href="https://live.douyin.com/26766793836" target="_blank">沧海直播</a> ☜
-        <p>
-     </div>  
-</body>  
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>沧海电台 ✨</title>
+    <style>
+        /* 基础布局 */
+        body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* 星空背景 */
+        .star {
+            position: fixed;
+            width: 2px;
+            height: 2px;
+            background: rgba(255,255,255,0.8);
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        /* 透明心形特效 */
+        .mini-heart {
+            position: absolute;
+            font-size: 20px;
+            animation: 
+                float 4s linear forwards,
+                blink 1.5s ease infinite;
+            opacity: 0.6;
+            filter: drop-shadow(0 0 5px currentColor);
+            pointer-events: none;
+        }
+
+        /* 内容容器 */
+        .room {
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(255,255,255,0.2);
+            max-width: 600px;
+            position: relative;
+            z-index: 100;
+            color: #fff;
+            backdrop-filter: blur(8px);
+            transform: translateY(-10%);
+
+            
+            /* 新增居中优化 */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transform: none; /* 移除原有偏移 */
+        }
+
+        /* 标题样式 */
+        h1 {
+            color: #7fffd4;
+            text-shadow: 0 0 15px #00ffff;
+            margin: 0 0 1.5rem;
+            font-size: 2.4rem;
+            white-space: nowrap;
+        }
+
+        /* 段落样式 */
+        p {
+            margin: 0.8rem 0;
+            line-height: 1.5;
+            text-align: center;
+            width: 100%;
+            position: relative;
+        }
+
+        /* 链接容器 */
+        .links {
+            margin-top: 1.2rem;
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        /* 动画定义 */
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes float {
+            100% {
+                transform: 
+                    translateY(-100vh) 
+                    translateX(calc(var(--x-offset) * 30vw))
+                    rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 0.8; transform: scale(1.2); }
+        }
+    </style>
+</head>
+<body>
+    <!-- 动态背景 -->
+    <div id="stars"></div>
+    
+    <!-- 主要内容 -->
+    <div class="room">
+        <h1>沧海 Fm ♛¹⁰⁵</h1>
+        <p>🩷 陪 伴 🩷</p>
+        <p>🧡 点 歌 🧡</p>
+        <p>💛 音 乐 💛</p>
+        <p>💚 怀 旧 💚</p>
+        <p>⏰️ 直播时间19:50/14:00</p>
+        <div class="links">
+            <a href="https://www.douyin.com/user/MS4wLjABAAAA3C9LZZheBM7S9c6O16BfDEFvGfWqDoSWWEcrnsG0tDBwPKITb8fV9qgPvG_Znrcp" 
+               target="_blank" style="color: #7fffd4; text-decoration: none;">🎵 沧海抖音</a>
+            <a href="https://live.douyin.com/26766793836" 
+               target="_blank" style="color: #7fffd4; text-decoration: none;">🎥 沧海直播</a>
+        </div>
+    </div>
+
+    <script>
+        // 生成星空
+        function createStars() {
+            const container = document.getElementById('stars');
+            for(let i=0; i<200; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                container.appendChild(star);
+            }
+        }
+
+        // 生成透明小心心
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'mini-heart';
+            heart.innerHTML = '❤';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.color = `hsla(${Math.random()*360}, 70%, 60%, 0.7)`;
+            heart.style.setProperty('--x-offset', Math.random() * 0.4 - 0.2);
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 4000);
+        }
+
+        // 初始化
+        createStars();
+        setInterval(createHeart, 200);
+
+        // 鼠标互动
+        document.addEventListener('mousemove', (e) => {
+            if(Math.random() > 0.85) {
+                const heart = document.createElement('div');
+                heart.className = 'mini-heart';
+                heart.style.left = e.clientX + 'px';
+                heart.style.top = e.clientY + 'px';
+                heart.style.color = `hsla(${Math.random()*360}, 80%, 70%, 0.6)`;
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 3000);
+            }
+        });
+
+        // 链接悬停特效
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('mouseover', () => {
+                link.style.textShadow = '0 0 15px #00ffff';
+                link.style.transform = 'scale(1.1)';
+            });
+            link.addEventListener('mouseout', () => {
+                link.style.textShadow = 'none';
+                link.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
 </html>
